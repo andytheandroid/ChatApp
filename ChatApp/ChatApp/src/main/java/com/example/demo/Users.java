@@ -1,4 +1,4 @@
-package com.example.demo.LoginModule;
+package com.example.demo;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -15,31 +15,31 @@ public class  Users {
     
     @Field("Username")
 
-    private String Username;
+    private String username;
     
     @Field("Password")
 
-    private	String Password;
+    private	String password;
     
    
    public String getUsername() {
-		return Username;
+		return username;
 	}
 	public Users(String username, String password) {
 		super();
-		this.Username = username;
-		this.Password = password;
+		this.username = username;
+		this.password = password;
 	}
 	
 	
 	public void setUsername(String username) {
-		this.Username = username;
+		this.username = username;
 	}
 	public String getPassword() {
-		return Password;
+		return password;
 	}
 	public void setPassword(String password) {
-		this.Password = password;
+		this.password = password;
 	}
 
 }

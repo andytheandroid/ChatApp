@@ -37,13 +37,13 @@
 
 				<div class="wrap-input100 validate-input" data-validate="Name is required">
 					<span class="label-input100">Username or email</span>
-					<input class="input100" type="text" name="Username" placeholder="Enter your name" required = true>
+					<input class="input100" type="text" name="username" placeholder="Enter your name" required = true>
 					<span class="focus-input100"></span>
 				</div>
 
 <div class="wrap-input100 validate-input" data-validate="Password is required">
 					<span class="label-input100">Password</span>
-					<input class="input100" type="password" name="Password" placeholder="Enter your password" required = true>
+					<input class="input100" type="password" name="password" placeholder="Enter your password" required = true>
 					<span class="focus-input100"></span>
 				</div>
 
@@ -115,7 +115,7 @@
 
 	    $.ajax({
 	        type: 'POST',
-	        url: 'http://localhost:8080/loginUser',
+	        url: 'http://localhost:8086/loginUser',
 	        dataType: 'json',
 	        data: JSON.stringify(obj),
 	        contentType : 'application/json',
