@@ -36,6 +36,7 @@ public class LoginService implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		Users user = userRepo.findByUsername(username);
+		System.out.println("Funciona por favor");
 	System.out.println(user);
 		if(user == null) {
 	      throw new UsernameNotFoundException("User not found");
