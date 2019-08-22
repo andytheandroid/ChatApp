@@ -6,22 +6,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@Controller
 public class LoginController {
 	
 	@Autowired
 	private LoginService service;
 
-    @RequestMapping(value = "/loginUser", method = RequestMethod.POST)
-    public String performLoginUser(@RequestBody Users user){
-    	
+    @PostMapping("/loginUser")
+    public String loginUser(@ModelAttribute Users user){
+    	System.out.println("Servicio llamado");
+
     	List<Users> results = service.requestUsers(user.getUsername(), user.getPassword());
-    	
+    	System.out.println("Servicio llamado");
 		System.out.println(user.getUsername());
 		System.out.println(user.getPassword());
 
@@ -43,6 +48,8 @@ public class LoginController {
     	return service.getAllUsers();
     }
 
+    
+   
 	
 	
 }

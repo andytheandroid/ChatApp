@@ -153,4 +153,12 @@ public class LoginRepositoryImpl implements LoginRepository{
 		return false;
 	}
 
+	@Override
+	public Users findByUsername(String username) {
+		Query query = new Query();
+		query.addCriteria(Criteria.where("Username").is(username));
+		List<Users> users = mongoTemplate.find(query, Users.class);
+		return users.get(0);
+	}
+
 }
