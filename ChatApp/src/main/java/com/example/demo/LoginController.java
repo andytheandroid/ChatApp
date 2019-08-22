@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -25,22 +26,36 @@ public class LoginController {
     public String loginUser(@ModelAttribute Users user){
     	System.out.println("Servicio llamado");
 
-    	List<Users> results = service.requestUsers(user.getUsername(), user.getPassword());
-    	System.out.println("Servicio llamado");
-		System.out.println(user.getUsername());
-		System.out.println(user.getPassword());
+    	
+    	
+    	
+    	
+    	List<Users> users = service.requestUsers(user.getUsername(), user.getPassword());
+    	
+    	
 
-    	if(results.isEmpty()) {
+    	System.out.println(users);
+    	if(users.isEmpty()) {
     		System.out.println("Not found");
-    		return "Not found";
+    		return "Error";
     	}
     	else {
-    		System.out.println("Sucess");
+    		if(users.get(0).isLogged()) {
+    			return "Main";
+    		}else {
+    			return "login";
+    		}
+    		
+    		
+    		
 
-    		return "Sucess";
     	}
     }
 
+    
+    
+    
+    
     
     @RequestMapping(value = "/getusers", method = RequestMethod.POST)
     public List<Users> getusers(){

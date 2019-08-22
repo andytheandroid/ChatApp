@@ -11,6 +11,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -22,8 +23,13 @@ public class LoginRepositoryImpl implements LoginRepository{
 	@Override
 	public List<Users> findUserByName(String name,String password) {
 		Query query = new Query();
+		System.out.println(name);
+		System.out.println(password);
+
 		query.addCriteria(Criteria.where("Username").is(name).and("Password").is(password));
 		List<Users> users = mongoTemplate.find(query, Users.class);
+		System.out.println("Aqui hay algo");
+		System.out.println(users.get(0));
 		return users;
 	}
 
@@ -77,8 +83,30 @@ public class LoginRepositoryImpl implements LoginRepository{
 
 	@Override
 	public <S extends Users> S save(S entity) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		System.out.println("Saved");
+		Query query = new Query();
+				query.addCriteria(Criteria.where("Username").is(entity.getUsername()).and("logged").is(false));
+				query.fields().include("Username");
+
+				Users userTest3 = mongoTemplate.findOne(query, Users.class);
+				System.out.println("userTest3 - " + userTest3);
+
+				Update update = new Update();
+				update.set("logged",true);
+
+				mongoTemplate.updateFirst(query, update, Users.class);
+
+				//returns everything
+				Query query1 = new Query();
+				query1.addCriteria(Criteria.where("name").is("appleC"));
+
+				Users userTest3_1 = mongoTemplate.findOne(query1, Users.class);
+				System.out.println("userTest3_1 - " + userTest3_1);
+				
+				return (S) userTest3_1;
+
+		
 	}
 
 	@Override

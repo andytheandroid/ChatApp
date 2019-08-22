@@ -25,6 +25,20 @@ public class LoginService implements UserDetailsService {
 		
 	List<Users> results = userRepo.findUserByName(name, password);
 
+    if(!results.isEmpty()) {
+    	
+    	if(!results.get(0).isLogged()) {
+    		
+    		userRepo.save(results.get(0));
+    		
+    		
+    	}
+    	
+    }
+	
+	
+	
+	
 	return results;
 	}
 	
