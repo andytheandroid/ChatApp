@@ -28,18 +28,24 @@ public class LoginController {
 	@Autowired
 	private LoginService service;
 
-   
+    public String loginUser(@ModelAttribute Users user){
+    	System.out.println("Servicio llamado");
+    	List<Users> users = service.requestUsers(user.getUsername(), user.getPassword());
+    	
+    	
+    	System.out.println("user");
+    	System.out.println(users);
+		return users.toString();
+    	
+    	
     		
     		
-	@RequestMapping(value = "/loginUser", method = RequestMethod.GET)
-    public String login(HttpServletRequest req) {
-        return "loginUser";
-    }
+    		
     		
     		
 
     	
-    
+    }
 
     
     
