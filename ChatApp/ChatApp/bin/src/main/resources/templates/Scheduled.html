@@ -30,34 +30,7 @@
 
 	<div class="container-contact100">
 		<div class="wrap-contact100">
-			<form class="contact100-form validate-form" action ="javascript:callJquery()" id="LoginForm">
-				<span class="contact100-form-title">
-					Chat App Login
-				</span>
-
-				<div class="wrap-input100 validate-input" data-validate="Name is required">
-					<span class="label-input100">Username or email</span>
-					<input class="input100" type="text" name="username" placeholder="Enter your name" required = true>
-					<span class="focus-input100"></span>
-				</div>
-
-<div class="wrap-input100 validate-input" data-validate="Password is required">
-					<span class="label-input100">Password</span>
-					<input class="input100" type="password" name="password" placeholder="Enter your password" required = true>
-					<span class="focus-input100"></span>
-				</div>
-
-				
-
-				<div class="container-contact100-form-btn">
-					<div class="wrap-contact100-form-btn">
-						<div class="contact100-form-bgbtn"></div>
-						<button class="contact100-form-btn" action = >Login</button>
-
-							
-					</div>
-				</div>
-			</form>
+			RESPONSE GOES HERE
 		</div>
 	</div>
 
@@ -111,11 +84,11 @@
 	$().ready(function(){
 	$('form').submit(function(){
 
-	    var obj = $("#LoginForm").serializeJSON();
+	    var obj = $("#Pokemontrainerform").serializeJSON();
 
 	    $.ajax({
 	        type: 'POST',
-	        url: 'http://localhost:8086/loginUser',
+	        url: 'http://localhost:8086/greeting',
 	        dataType: 'json',
 	        data: JSON.stringify(obj),
 	        contentType : 'application/json',

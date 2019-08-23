@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Contact V4</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	 <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/util.css}"/>
+    
+	
+	
+</head>
+<body>
+
+
+	<div class="container-contact100">
+		<div class="wrap-contact100">
+			<form   class="contact100-form validate-form" th:action="@{/loginUser}" method="POST">
+				<span class="contact100-form-title">
+					Chat App Login
+				</span>
+
+				<div class="wrap-input100 validate-input" data-validate="Name is required">
+					<span class="label-input100">Username or email</span>
+					<input class="input100" type="text" name="username"  placeholder="Enter your name" required = true >
+					<span class="focus-input100"></span>
+				</div>
+
+<div class="wrap-input100 validate-input" data-validate="Password is required">
+					<span class="label-input100">Password</span>
+					<input class="input100" type="password" name="password" placeholder="Enter your password" required = true>
+					<span class="focus-input100"></span>
+				</div>
+
+				
+
+				<div class="container-contact100-form-btn">
+					<div class="wrap-contact100-form-btn">
+						<div class="contact100-form-bgbtn"></div>
+		<input type="submit" value="Login" class="contact100-form-btn"/>
+							
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+
+
+	<div id="dropDownSelect1"></div>
+
+ <script type="text/javascript" th:src="@{/webjars/jquery/3.2.1/jquery.min.js/}"></script>
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+
+<!--===============================================================================================-->
+<!--===============================================================================================-->
+	<script th:src  = "@{/vendor/animsition/js/animsition.min.js}"></script>
+<!--===============================================================================================-->
+	<script th:src="@{/vendor/bootstrap/js/popper.js}"></script>
+	<script th:src="@{/vendor/bootstrap/js/bootstrap.min.js}"></script>
+<!--===============================================================================================-->
+	<script th:src="@{/vendor/select2/select2.min.js}"></script>
+	
+<!--==============
+=================================================================================-->
+	<script th:src= "@{/vendor/daterangepicker/moment.min.js}"></script>
+	<script th:src= "@{/vendor/daterangepicker/daterangepicker.js}"></script>
+<!--===============================================================================================-->
+	<script th:src ="@{/vendor/countdowntime/countdowntime.js}"></script>
+<!--===============================================================================================-->
+	<script th:src = "@{/js/main.js}"></script>
+		<script th:src = "@{/js/serializejson.js}"></script>
+	
+
+	
+	<script>
+	
+	
+	
+	/*function callJquery(){
+		
+	$().ready(function(){
+	$('form').submit(function(){
+
+	    var obj = $("#LoginForm").serializeJSON();
+
+	    $.ajax({
+	        type: 'POST',
+	        url: 'http://localhost:8086/loginUser',
+	        dataType: 'json',
+	        data: JSON.stringify(obj),
+	        contentType : 'application/json',
+	        success: function(data) {
+	            alert(data)
+	        }
+	    });
+	    
+	});
+	});
+	}*/
+	
+	</script>
+
+</body>
+</html>

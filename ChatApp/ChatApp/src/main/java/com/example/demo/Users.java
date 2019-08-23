@@ -21,8 +21,24 @@ public class  Users {
 
     private	String password;
     
+    
+    @Field("logged")
+    private boolean logged;
+    
    
-   public String getUsername() {
+   public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public boolean isLogged() {
+		return logged;
+	}
+	public void setLogged(boolean logged) {
+		this.logged = logged;
+	}
+public String getUsername() {
 		return username;
 	}
 	public Users(String username, String password) {
