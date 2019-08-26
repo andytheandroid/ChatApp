@@ -27,65 +27,23 @@ public class LoginController {
 	
 	@Autowired
 	private LoginService service;
-
-<<<<<<< HEAD:ChatApp/ChatApp/src/main/java/com/example/demo/LoginController.java
-    public String loginUser(@ModelAttribute Users user){
-    	System.out.println("Servicio llamado");
-    	List<Users> users = service.requestUsers(user.getUsername(), user.getPassword());
-    	
-    	
-    	System.out.println("user");
-    	System.out.println(users);
-		return users.toString();
-    	
-    	
+		
     		
-    		
-    		
-    		
-    		
+  
 
     	
-=======
     @PostMapping("/loginUser")
     public String loginUser(@ModelAttribute Users user){
-    	System.out.println("Servicio llamado");
-
-    	
-    	
-    	
-    	
-    	List<Users> users = service.requestUsers(user.getUsername(), user.getPassword());
-    	
-    	
-
-    	System.out.println(users);
-    	if(users.isEmpty()) {
-    		System.out.println("Not found");
-    		return "Error";
-    	}
-    	else {
-    		if(users.get(0).isLogged()) {
-    			return "Main";
-    		}else {
-    			return "login";
-    		}
-    		
-    		
-    		
-
-    	}
->>>>>>> b1e48cbb2e2315de429ad538cf8ae510af0b4f9f:ChatApp/src/main/java/com/example/demo/LoginController.java
+    	return "/Main";
+   
+    
     }
 
     
     
-<<<<<<< HEAD:ChatApp/ChatApp/src/main/java/com/example/demo/LoginController.java
    
-=======
     
     
->>>>>>> b1e48cbb2e2315de429ad538cf8ae510af0b4f9f:ChatApp/src/main/java/com/example/demo/LoginController.java
     
     @RequestMapping(value = "/getusers", method = RequestMethod.POST)
     public List<Users> getusers(){

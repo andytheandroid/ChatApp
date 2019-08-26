@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -31,7 +32,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
           .authorizeRequests()
               .antMatchers(
             		  "/",
-            	      "/loginUser",
                       "/js/**",
                       "/css/**",
                       "/images/**",
@@ -41,8 +41,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
              anyRequest().authenticated()
              .and()
          .formLogin()
-             .loginPage("/login")
+             .loginPage("/login").successForwardUrl("/Main.html").failureForwardUrl("/Error.html").loginProcessingUrl("/loginUser")
              .permitAll()
+       
              .and()
          .logout()                                    
              .permitAll();
@@ -57,8 +58,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
      return new BCryptPasswordEncoder();
     }
     
+    @Bean
+    public AuthenticationManager customAuthenticationManager() throws Exception {
+        return authenticationManager();
+    }
+
     @Override
     public void configure(AuthenticationManagerBuilder builder) throws Exception {
-     builder.userDetailsService(loginService);
+   builder.userDetailsService(loginService).passwordEncoder(passwordEncoder());
+     
+     
     }
 }
