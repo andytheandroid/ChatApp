@@ -27,59 +27,28 @@ public class LoginController {
 	
 	@Autowired
 	private LoginService service;
-
-
- 	
-	 @RequestMapping("/restricted")  
-	    String restricted() {  
-	        return "error";  
-	    }  
+		
     		
-    		
-	
   
 
     	
-    @PostMapping("/loginUser")
-    public String loginUser(@ModelAttribute Users user){
-
-    	System.out.println("Servicio llamado");
-
-    	
-    	
-    	
-    	
-    	List<Users> users = service.requestUsers(user.getUsername(), user.getPassword());
-    	
-    	
-
-    	System.out.println(users);
-    	if(users.isEmpty()) {
-    		System.out.println("Not found");
-    		return "Error";
-    	}
-    	else {
-    		if(users.get(0).isLogged()) {
-    			return "Main";
-    		}else {
-    			return "login";
-    		}
-    		
-    		
-    		
-
-    	}
-
-    	return "/Main";
    
     
+	  @RequestMapping(value = "/loginUser", method = RequestMethod.POST)
+	    public String loginUser(){
+	    	
+	    	return "Main";
+	    }
 
-    }
-
-    
-    
+	    
    
-    
+	  @RequestMapping(value = "/main", method = RequestMethod.POST)
+	    public String mains(){
+	    	
+	    	return "Main";
+	    }
+
+	   
     
     
     @RequestMapping(value = "/getusers", method = RequestMethod.POST)

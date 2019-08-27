@@ -1,12 +1,12 @@
 package com.example.demo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -19,17 +19,21 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 
-@EnableOAuth2Sso  
-@Configuration  
+@EnableWebSecurity
+@Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
 	LoginService loginService;
+	
+	 @Autowired
+	  Securityhandler successHandler;
+
 
 	  
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-    	 /* http.csrf().disable()
+    	  http.csrf().disable()
           .authorizeRequests()
               .antMatchers(
             		  "/",
@@ -41,21 +45,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
              
              anyRequest().authenticated()
              .and()
-         .formLogin()
-             .loginPage("/login").successForwardUrl("/Main.html").failureForwardUrl("/Error.html").loginProcessingUrl("/loginUser")
-             .permitAll()
-       
-             .and()
+         .formLogin().
+         loginProcessingUrl("/login")
+         .permitAll()
+         .usernameParameter("username")
+         .passwordParameter("password")
+         .successHandler(successHandler)
+         .and()
          .logout()                                    
              .permitAll();
-    	 */
-    	  
-    	  http.authorizeRequests()  
-          .antMatchers("/").permitAll()  
-          .antMatchers("/img/**").permitAll()  
-          .anyRequest().authenticated();  
-
-    	      
     	  
     	  
     }
