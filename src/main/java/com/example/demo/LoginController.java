@@ -28,6 +28,7 @@ public class LoginController {
 	@Autowired
 	private LoginService service;
 
+
  	
 	 @RequestMapping("/restricted")  
 	    String restricted() {  
@@ -35,11 +36,13 @@ public class LoginController {
 	    }  
     		
     		
-    		
+	
+  
 
     	
     @PostMapping("/loginUser")
     public String loginUser(@ModelAttribute Users user){
+
     	System.out.println("Servicio llamado");
 
     	
@@ -66,6 +69,11 @@ public class LoginController {
     		
 
     	}
+
+    	return "/Main";
+   
+    
+
     }
 
     

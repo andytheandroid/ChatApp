@@ -21,8 +21,17 @@ public class  Users {
 
     private	String password;
     
+    private String[] roles;
+
     
-    @Field("logged")
+    
+    public String[] getRoles() {
+		return roles;
+	}
+	public void setRoles(String[] roles) {
+		this.roles = roles;
+	}
+	@Field("logged")
     private boolean logged;
     
    
