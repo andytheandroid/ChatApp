@@ -27,7 +27,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	LoginService loginService;
 	
 	 @Autowired
-	  Securityhandler successHandler;
+	 SecuritySucessHandler successHandler;
 
 
 	  
@@ -37,6 +37,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
           .authorizeRequests()
               .antMatchers(
             		  "/",
+            		  "/403",
                       "/js/**",
                       "/css/**",
                       "/images/**",
@@ -46,7 +47,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
              anyRequest().authenticated()
              .and()
          .formLogin().
-         loginProcessingUrl("/login")
+         loginProcessingUrl("/loginUser")
          .permitAll()
          .usernameParameter("username")
          .passwordParameter("password")
@@ -54,6 +55,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
          .and()
          .logout()                                    
              .permitAll();
+          http.exceptionHandling().accessDeniedPage("/403");
+
     	  
     	  
     }

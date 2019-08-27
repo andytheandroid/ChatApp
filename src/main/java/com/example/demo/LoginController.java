@@ -25,40 +25,33 @@ import org.springframework.web.bind.annotation.RestController;
 @Controller
 public class LoginController {
 	
-	@Autowired
-	private LoginService service;
 		
     		
   
+	 @RequestMapping(value={"/","home"})
+     public String home(){
+         return "home";
+     }
 
-    	
-   
-    
-	  @RequestMapping(value = "/loginUser", method = RequestMethod.POST)
-	    public String loginUser(){
-	    	
-	    	return "Main";
-	    }
+ @RequestMapping(value="/Main")
+ public String user(){
+     return "Main";
+ }
 
-	    
-   
-	  @RequestMapping(value = "/main", method = RequestMethod.POST)
-	    public String mains(){
-	    	
-	    	return "Main";
-	    }
+ @RequestMapping(value="/admin")
+ public String admin(){
+     return "admin";
+ }
 
-	   
-    
-    
-    @RequestMapping(value = "/getusers", method = RequestMethod.POST)
-    public List<Users> getusers(){
-    	
-    	return service.getAllUsers();
-    }
+ @RequestMapping(value="/loginUser")
+ public String login(){
+     return "login";
+ }
 
-    
-   
+ @RequestMapping(value="/403")
+ public String Error403(){
+     return "403";
+ }
 	
 	
 }
