@@ -28,8 +28,6 @@ public class LoginRepositoryImpl implements LoginRepository{
 
 		query.addCriteria(Criteria.where("Username").is(name).and("Password").is(password));
 		List<Users> users = mongoTemplate.find(query, Users.class);
-		System.out.println("Aqui hay algo");
-		System.out.println(users.get(0));
 		return users;
 	}
 

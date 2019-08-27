@@ -28,25 +28,16 @@ public class LoginController {
 	@Autowired
 	private LoginService service;
 
-<<<<<<< HEAD:ChatApp/ChatApp/src/main/java/com/example/demo/LoginController.java
-    public String loginUser(@ModelAttribute Users user){
-    	System.out.println("Servicio llamado");
-    	List<Users> users = service.requestUsers(user.getUsername(), user.getPassword());
-    	
-    	
-    	System.out.println("user");
-    	System.out.println(users);
-		return users.toString();
-    	
-    	
-    		
-    		
+ 	
+	 @RequestMapping("/restricted")  
+	    String restricted() {  
+	        return "error";  
+	    }  
     		
     		
     		
 
     	
-=======
     @PostMapping("/loginUser")
     public String loginUser(@ModelAttribute Users user){
     	System.out.println("Servicio llamado");
@@ -75,17 +66,13 @@ public class LoginController {
     		
 
     	}
->>>>>>> b1e48cbb2e2315de429ad538cf8ae510af0b4f9f:ChatApp/src/main/java/com/example/demo/LoginController.java
     }
 
     
     
-<<<<<<< HEAD:ChatApp/ChatApp/src/main/java/com/example/demo/LoginController.java
    
-=======
     
     
->>>>>>> b1e48cbb2e2315de429ad538cf8ae510af0b4f9f:ChatApp/src/main/java/com/example/demo/LoginController.java
     
     @RequestMapping(value = "/getusers", method = RequestMethod.POST)
     public List<Users> getusers(){

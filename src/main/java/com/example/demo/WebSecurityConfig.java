@@ -1,5 +1,6 @@
 package com.example.demo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -17,8 +18,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 
-@EnableWebSecurity
-@Configuration
+@EnableOAuth2Sso  
+@Configuration  
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
@@ -27,7 +28,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	  
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-    	  http.csrf().disable()
+    	 /* http.csrf().disable()
           .authorizeRequests()
               .antMatchers(
             		  "/",
@@ -46,6 +47,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
              .and()
          .logout()                                    
              .permitAll();
+    	 */
+    	  
+    	  http.authorizeRequests()  
+          .antMatchers("/").permitAll()  
+          .antMatchers("/img/**").permitAll()  
+          .anyRequest().authenticated();  
+
+    	      
     	  
     	  
     }

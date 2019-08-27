@@ -1,0 +1,6 @@
+okta:  
+  oauth2: 
+    issuer: https://dev-469389.okta.com/oauth2/default  
+    clientId: 0oa16sbhj9c25IDkg357
+    clientSecret: 0oa16sbhj9c25IDkg357
+    rolesClaim: groups
