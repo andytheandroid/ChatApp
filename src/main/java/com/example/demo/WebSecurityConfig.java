@@ -29,6 +29,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
           .authorizeRequests()
               .antMatchers(
             		  "/",
+            		  "/register",
             		 "/home",
             		  "/403",
                       "/js/**",
@@ -63,7 +64,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public AuthenticationManager customAuthenticationManager() throws Exception {
         return authenticationManager();
-    }
+     }
 
     @Override
     public void configure(AuthenticationManagerBuilder builder) throws Exception {
