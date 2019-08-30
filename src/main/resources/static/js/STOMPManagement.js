@@ -1,22 +1,32 @@
-
+var usernamePage = document.querySelector('#username-page');
+var chatPage = document.querySelector('#chat-page');
+var mainPage = document.getElementById('nameChat');
+var messageForm = document.querySelector('#messageForm');
+var messageInput = document.querySelector('#messageSent');
+var messageSendButton = document.querySelector('#sendMessageButton');
+var messageArea = document.querySelector('.messages');
+var connectingElement = document.querySelector('.connecting');
 
 var stompClient = null;
 var username = null;
 
+var colors = [
+    '#2196F3', '#32c787', '#00BCD4', '#ff5652',
+    '#ffc107', '#ff85af', '#FF9800', '#39bbb0'
+];
 
-function connect(event) {
-    username = document.querySelector('#UserConnected').value.trim();
+function connect() {
+    username = "Carlos";
 
+
+    
     if(username) {
-      //  usernamePage.classList.add('hidden');
-      //  chatPage.classList.remove('hidden');
-
+      
         var socket = new SockJS('/ws');
         stompClient = Stomp.over(socket);
 
         stompClient.connect({}, onConnected, onError);
     }
-   // event.preventDefault();
 }
 
 
@@ -30,7 +40,6 @@ function onConnected() {
         JSON.stringify({sender: username, type: 'JOIN'})
     )
 
-    connectingElement.classList.add('hidden');
 }
 
 
@@ -41,16 +50,28 @@ function onError(error) {
 
 
 function sendMessage(event) {
-    var messageContent = messageInput.value.trim();
-    if(messageContent && stompClient) {
-        var chatMessage = {
+	console.log("message send");
+
+    var messageContent = document.getElementById('messageSent').value;
+	console.log("message contenIDO");
+
+    console.log(messageContent);
+
+    var chatMessage = {
             sender: username,
-            content: messageInput.value,
+            content: messageContent,
             type: 'CHAT'
         };
         stompClient.send("/app/chat.sendMessage", {}, JSON.stringify(chatMessage));
         messageInput.value = '';
+
+    
+    if(messageContent && stompClient) {
+        
+    
     }
+    
+    
     event.preventDefault();
 }
 
@@ -101,6 +122,9 @@ function getAvatarColor(messageSender) {
     var index = Math.abs(hash % colors.length);
     return colors[index];
 }
+	
 
-connect()
-messageForm.addEventListener('submit', sendMessage, true)
+    connect()
+	messageSendButton.addEventListener('click', sendMessage, false)
+
+
