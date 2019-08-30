@@ -82,34 +82,29 @@
             
             <!-- Request Form -->
                     <div class="form-container">
-                        <form id="requestForm" data-toggle="validator" data-focus="false">
+                        <form id="requestForm" data-toggle="validator" data-focus="false" name = "requestForm" >
                             <div class="form-group">
-                                <input type="text" class="form-control-input" id="rname" name="rname" required>
+                                <input type="text" class="form-control-input" id="Username" name="Username" required>
                                 <label class="label-control" for="rname">Username</label>
                                 <div class="help-block with-errors"></div>
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-control-input" id="remail" name="remail" required>
+                                <input type="email" class="form-control-input" id="Email" name="Email" required>
                                 <label class="label-control" for="remail">Email</label>
                                 <div class="help-block with-errors"></div>
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control-input" id="rpassword" name="rpassword" required>
+                                <input type="password" class="form-control-input" id="Email" name="Email" required>
                                 <label class="label-control" for="rphone">Password</label>
                                 <div class="help-block with-errors"></div>
                             </div>
-                               <div class="form-group">
-                                <input type="password" class="form-control-input" id="rcpassword" name="rcpassword" required>
-                                <label class="label-control" for="rphone">Confirm Password</label>
-                                <div class="help-block with-errors"></div>
-                            </div>
-                           
+                             
                             <div class="form-group checkbox">
                                 <input type="checkbox" id="rterms" value="Agreed-to-Terms" name="rterms" required>I agree with Chatot stated <a href="privacy-policy.html">Privacy Policy</a> and <a href="terms-conditions.html">Terms & Conditions</a>
                                 <div class="help-block with-errors"></div>
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="form-control-submit-button">Register</button>
+                                <button type="submit" class="form-control-submit-button" onClick = "register()">Register</button>
                             </div>
                             <div class="form-message">
                                 <div id="rmsgSubmit" class="h3 text-center hidden"></div>
@@ -151,6 +146,39 @@
     <script src="js/swiper.min.js"></script> <!-- Swiper for image and text sliders -->
     <script src="js/jquery.magnific-popup.js"></script> <!-- Magnific Popup for lightboxes -->
     <script src="js/validator.min.js"></script> <!-- Validator.js - Bootstrap plugin that validates forms -->
-    <script src="js/scripts.js"></script> <!-- Custom scripts -->
+     <script src="js/serializejson.js"></script> 
+      <script src="js/scripts.js"></script> 
+     
+    
+    <script>
+    
+    
+    
+    function register(){
+    	
+    	
+    	
+    	$.ajax({
+    		  cache: false,
+    		  url: 'http://localhost:8086/newUser',
+    		  data: $('requestForm').serialize(),
+    		  datatype: 'json',
+    		  success: function(data) {
+				
+    		  }
+    		});
+    	
+    	
+    	
+    	
+    }
+    
+    
+    
+    
+    
+    
+    
+    </script>
 </body>
 </html>

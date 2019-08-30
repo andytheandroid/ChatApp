@@ -20,8 +20,18 @@ public class  Users implements UserDetails {
     @Field("Username")
 
     private String username;
+   
+    @Field("Email")
+
+    private String Email;
     
-    @Field("Password")
+    public String getEmail() {
+		return Email;
+	}
+	public void setEmail(String email) {
+		Email = email;
+	}
+	@Field("Password")
 
     private	String password;
     
