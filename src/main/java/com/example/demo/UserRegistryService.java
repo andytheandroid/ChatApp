@@ -8,7 +8,7 @@ public class UserRegistryService {
 	
 	
 	@Autowired
-	LoginRepository userRepo;
+	LoginRepositoryImpl userRepo;
 	
 	
 	public String registerUser(Users newUser) {

@@ -21,6 +21,7 @@ public class WebMvcConfiguration extends WebMvcConfigurerAdapter {
         registry.addViewController("/403").setViewName("403");
         registry.addViewController("/logout").setViewName("logout");
         registry.addViewController("/register").setViewName("register");
+        registry.addViewController("/newUser").setViewName("newUser");
 
 
 

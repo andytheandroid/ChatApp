@@ -35,7 +35,6 @@ public class LoginRepositoryImpl implements LoginRepository{
 
 	@Override
 	public <S extends Users> List<S> saveAll(Iterable<S> entities) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -85,27 +84,11 @@ public class LoginRepositoryImpl implements LoginRepository{
 	public <S extends Users> S save(S entity) {
 		
 		System.out.println("Saved");
-		Query query = new Query();
-				query.addCriteria(Criteria.where("Username").is(entity.getUsername()).and("logged").is(false));
-				query.fields().include("Username");
-
-				Users userTest3 = mongoTemplate.findOne(query, Users.class);
-				System.out.println("userTest3 - " + userTest3);
-
-				Update update = new Update();
-				update.set("logged",true);
-
-				mongoTemplate.updateFirst(query, update, Users.class);
-
-				//returns everything
-				Query query1 = new Query();
-				query1.addCriteria(Criteria.where("name").is("appleC"));
-
-				Users userTest3_1 = mongoTemplate.findOne(query1, Users.class);
-				System.out.println("userTest3_1 - " + userTest3_1);
+		mongoTemplate.save(entity);
 				
-				return (S) userTest3_1;
+				
 
+		return entity;
 		
 	}
 

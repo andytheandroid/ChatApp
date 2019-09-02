@@ -33,15 +33,24 @@
 </head>
 <body data-spy="scroll" data-target=".fixed-top">
     
-    <!-- Preloader -->
+    <!-- Preloader 
 	<div class="spinner-wrapper">
         <div class="spinner">
             <div class="bounce1"></div>
             <div class="bounce2"></div>
             <div class="bounce3"></div>
+             <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+           <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+          
+            
         </div>
-    </div>
+    </div> -->
     <!-- end of preloader -->
+    
     
 
     <!-- Navigation -->
@@ -84,17 +93,17 @@
                     <div class="form-container">
                         <form id="requestForm" data-toggle="validator" data-focus="false" name = "requestForm" >
                             <div class="form-group">
-                                <input type="text" class="form-control-input" id="Username" name="Username" required>
+                                <input type="text" class="form-control-input" id="username" name="username" required>
                                 <label class="label-control" for="rname">Username</label>
                                 <div class="help-block with-errors"></div>
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-control-input" id="Email" name="Email" required>
+                                <input type="email" class="form-control-input" id="email" name="email" required>
                                 <label class="label-control" for="remail">Email</label>
                                 <div class="help-block with-errors"></div>
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control-input" id="Email" name="Email" required>
+                                <input type="password" class="form-control-input" id="password" name="password" required>
                                 <label class="label-control" for="rphone">Password</label>
                                 <div class="help-block with-errors"></div>
                             </div>
@@ -104,7 +113,7 @@
                                 <div class="help-block with-errors"></div>
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="form-control-submit-button" onClick = "register()">Register</button>
+                                <button type="submit" class="form-control-submit-button" >Register</button>
                             </div>
                             <div class="form-message">
                                 <div id="rmsgSubmit" class="h3 text-center hidden"></div>
@@ -147,31 +156,60 @@
     <script src="js/jquery.magnific-popup.js"></script> <!-- Magnific Popup for lightboxes -->
     <script src="js/validator.min.js"></script> <!-- Validator.js - Bootstrap plugin that validates forms -->
      <script src="js/serializejson.js"></script> 
-      <script src="js/scripts.js"></script> 
      
     
     <script>
     
     
     
-    function register(){
+    $('#requestForm').submit(function(e){
+    	
+    	console.log($('#requestForm').serialize());
+    	
+    	var json = $('#requestForm').serialize();
     	
     	
+    	var userjson = {
+    	  username: $( "#username" ).val(),
+    	  email: $( "#email" ).val(),
+    	  password: $( "#password" ).val()
+    	}
+
     	
+    	console.log("registering");
+    	console.log(JSON.stringify(userjson));
     	$.ajax({
+    		  type: "POST",
     		  cache: false,
     		  url: 'http://localhost:8086/newUser',
-    		  data: $('requestForm').serialize(),
-    		  datatype: 'json',
+    		  data: JSON.stringify(userjson),
+              contentType: "application/json",
+               
     		  success: function(data) {
+    		    	console.log("SUCESS registered");
+    		    	console.log(data);
+
+
 				
-    		  }
+    		  },
+     error: function(data) {
+	    	console.log("error cannot register");
+	    	console.log(data);
+
+		
+	  }
+    	     
     		});
+    	event.preventDefault();
+
+    	
+    });    	
+    	
+    
     	
     	
     	
-    	
-    }
+    
     
     
     

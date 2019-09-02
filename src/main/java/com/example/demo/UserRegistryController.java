@@ -11,11 +11,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
-	
-		
-    		
+@RestController
 public class UserRegistryController {
 	
 	
@@ -23,13 +21,14 @@ public class UserRegistryController {
 	UserRegistryService registryService;
 	
 	
-	 @RequestMapping(value="/newUser", method=RequestMethod.POST)  
+	 @RequestMapping(value= "/newUser", method=RequestMethod.POST)  
 	 public String registerUser(@RequestBody Users newUser) {
 	
+		 System.out.println("hola mundo registrando usuario");
 		 registryService.registerUser(newUser);
 		 
+		 return "register";
 		 
-		 return "Registered user sucess";  
 	      
 	  
 	 }
