@@ -30,6 +30,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
               .antMatchers(
             		  "/",
             		  "/newUser",
+            		  "/Error",
             		  "/register",
             		  "/Sucess",
             		 "/home",
