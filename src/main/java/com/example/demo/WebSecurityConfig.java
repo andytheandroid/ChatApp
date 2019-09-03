@@ -31,6 +31,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             		  "/",
             		  "/newUser",
             		  "/register",
+            		  "/Sucess",
             		 "/home",
             		  "/403",
                       "/js/**",

@@ -189,8 +189,7 @@
     		    	console.log("SUCESS registered");
     		    	console.log(data);
     		    	
-    		    	document.write("<h1> Sucess </h1><p>Welcome to chatot</p>");
-    		    	document.write("<a href= '/register>Return </a>");
+    		    	$(location).attr('href','http://localhost:8086/Sucess')
 
     		    	
     		    	
@@ -202,10 +201,7 @@
      error: function(data) {
 	    	console.log("error cannot register");
 	    	console.log(data);
-	    	document.write("<h1>Failure </h1><p>Cannot register user</p>");
-	    	document.write("<a href= '/register>Return </a>");
-
-
+	    
 
 		
 	  }

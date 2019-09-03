@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@Controller
 public class UserRegistryController {
 	
 	
@@ -27,7 +27,7 @@ public class UserRegistryController {
 		 System.out.println("hola mundo registrando usuario");
 		 registryService.registerUser(newUser);
 		 
-		 return "register";
+		 return "Sucess";
 		 
 	      
 	  
